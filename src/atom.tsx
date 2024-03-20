@@ -12,6 +12,21 @@ export interface IToDo {
   category: Categories;
 }
 
+const localStorageEffect =
+  (key: any) =>
+  ({ setSelf, onSet }: any) => {
+    const savedValue = localStorage.getItem(key);
+    if (savedValue != null) {
+      setSelf(JSON.parse(savedValue));
+    }
+
+    onSet((newValue: any, _: any, isReset: any) => {
+      isReset
+        ? localStorage.removeItem(key)
+        : localStorage.setItem(key, JSON.stringify(newValue));
+    });
+  };
+
 export const categoryState = atom<Categories>({
   key: "category",
   default: Categories.TO_DO,
@@ -20,6 +35,7 @@ export const categoryState = atom<Categories>({
 export const todoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
+  effects: [localStorageEffect("toDos")],
 });
 
 export const toDoSelector = selector({
