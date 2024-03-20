@@ -4,10 +4,14 @@ import { DefaultTheme } from "styled-components";
 export const darkTheme: DefaultTheme = {
   bgColor: "black",
   textColor: "White",
-  btnColor: "tomato",
+  disabled: "#4b6584",
+  btnColor: "#9c88ff",
+  titleColor: "#7158e2",
 };
 export const lightTheme: DefaultTheme = {
-  bgColor: "black",
-  textColor: "White",
-  btnColor: "tomato",
+  bgColor: "#ffcccc",
+  textColor: "black",
+  disabled: "#4b6584",
+  btnColor: "#9c88ff",
+  titleColor: "#7158e2",
 };

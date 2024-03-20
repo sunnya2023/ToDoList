@@ -1,5 +1,6 @@
-import { createGlobalStyle } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import ToDoList from "./components/ToDoList";
+import { lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
     html, body, div, span, applet, object, iframe,
@@ -29,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background: ${(props) => props.theme.bgColor};
 }
 ol, ul {
 	list-style: none;
@@ -45,13 +47,18 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+* {
+	box-sizing: border-box;
+}
 `;
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <ToDoList />
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyle />
+        <ToDoList />
+      </ThemeProvider>
     </>
   );
 }
