@@ -9,7 +9,6 @@ const List = styled.li`
   align-items: center;
   span {
     color: ${(props) => props.theme.textColor};
-    width: 100%;
   }
 `;
 
@@ -51,22 +50,24 @@ function ToDo({ text, category, id }: IToDo) {
   return (
     <List>
       <span>{text}</span>
-      {category !== Categories.TO_DO && (
-        <ListBtn name={Categories.TO_DO} onClick={onClick}>
-          To Do
-        </ListBtn>
-      )}
-      {category !== Categories.DOING && (
-        <ListBtn name={Categories.DOING} onClick={onClick}>
-          Doing
-        </ListBtn>
-      )}
-      {category !== Categories.DONE && (
-        <ListBtn name={Categories.DONE} onClick={onClick}>
-          Done
-        </ListBtn>
-      )}
-      <ListBtn onClick={deleteToDo}>delete</ListBtn>
+      <div>
+        {category !== Categories.TO_DO && (
+          <ListBtn name={Categories.TO_DO} onClick={onClick}>
+            To Do
+          </ListBtn>
+        )}
+        {category !== Categories.DOING && (
+          <ListBtn name={Categories.DOING} onClick={onClick}>
+            Doing
+          </ListBtn>
+        )}
+        {category !== Categories.DONE && (
+          <ListBtn name={Categories.DONE} onClick={onClick}>
+            Done
+          </ListBtn>
+        )}
+        <ListBtn onClick={deleteToDo}>delete</ListBtn>
+      </div>
     </List>
   );
 }
